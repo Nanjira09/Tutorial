@@ -1,0 +1,15 @@
+{% extends 'layout.html' %}
+
+
+{% block body %}
+    <h2>New Articles</h2>
+    <form method="POST" action="/add">
+        Title:<input type="text" name="title" class="form-control" placeholder="Enter Title">
+        Author:<input type="text" name="author" class="form-control" placeholder="Enter Author">
+        <label for="content">Content:</label>
+        <textarea class="form-control" name="content" id="content" placeholder="Enter Content" rows="3"></textarea>
+        <br>
+        <input type="submit" value="Post">
+    </form>
+
+{% endblock %}

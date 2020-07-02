@@ -1,0 +1,16 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+    {% from 'includes/_formhelpers.html' import render_field %}
+            <form method="POST" action="/update" enctype="multipart/form-data">
+                <div class="form-group">
+                    {{ render_field(form.username, class="form-control")}}
+                </div>
+                <div class="form-group">
+
+                    {{ render_field(form.email, class="form-control")}}
+                </div>
+                <button class="btn btn-outline-info" type="submit">Update</button>
+            </form>
+
+{% endblock %}

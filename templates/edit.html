@@ -1,0 +1,14 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+    <h1>Edit Post</h1>
+    <form method="POST" action="/post/edit/{{post.id}}">
+        Title:<input type="text" name="title" class="form-control" value="{{ post.title }}">
+        Author:<input type="text" name="author" class="form-control" value="{{ post.author }}">
+        <label for="content">Content:</label>
+        <textarea class="form-control" name="content" id="content" rows="3">{{post.content}}</textarea>
+        <br>
+        <input type="submit" value="Save">
+    </form>
+
+{% endblock %}

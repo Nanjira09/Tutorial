@@ -1,0 +1,27 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+    <h1>Articles</h1>
+    <a class="btn btn-primary" href="/add">+Post</a>
+    <hr>
+    {% for post in posts.items %}
+        <h2>{{ post.title }}</h2>
+        <p>By: {{ post.author }} on {{ post.date_posted.strftime('%Y-%m-%d') }}</p>
+        <p style="white-space: pre-wrap">{{ post.content }}</p>
+        <a class="btn btn-danger" href="/post/delete/{{post.id}}">Delete</a>
+        <a class="btn btn-primary" href="/post/edit/{{post.id}}">Edit</a>
+        <hr>
+    {% endfor %}
+    {% for page_num in posts.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+        {% if page_num %}
+            {% if posts.page == page_num %}
+                <a class="btn btn-info mb-4" href="{{ url_for('post', page=page_num) }}">{{ page_num }}</a>
+            {% else %}
+            <a class="btn btn-outline-info mb-4" href="{{ url_for('post', page=page_num) }}">{{ page_num }}</a>
+            {% endif %}
+        {% else %}
+            ...
+        {% endif %}
+    {% endfor %}
+
+{% endblock %}
